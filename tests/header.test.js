@@ -10,4 +10,5 @@ test('We can launch a browser', async () => {
     headless: false     // Enable graphical UI
   });
   const page = await browser.newPage();
+  await page.goto('localhost:3000');
 });
