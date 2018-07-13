@@ -48,6 +48,12 @@ test.only('When signed in, shows logout button', async () => {
 
   await page.setCookie({ name: 'session', value: sessionString });
   await page.setCookie({ name: 'session.sig', value: sig });
-  // Refrash the page
+  // Refresh the page
   await page.goto('localhost:3000');
+  // Wait for the react app to finish rendering everything to the screen
+  await page.waitFor('a[href="/auth/logout"]');
+
+  const text = await page.$eval('a[href="/auth/logout"]', el => el.innerHTML);
+
+  expect(text).toEqual('Logout');
 });
