@@ -28,8 +28,7 @@ class CustomPage {
 
     await this.page.setCookie({ name: 'session', value: session });
     await this.page.setCookie({ name: 'session.sig', value: sig });
-    // Refresh the page
-    await this.page.goto('localhost:3000');
+    await this.page.goto('localhost:3000/blogs');
     // Wait for the react app to finish rendering everything to the screen
     await this.page.waitFor('a[href="/auth/logout"]');
   }
