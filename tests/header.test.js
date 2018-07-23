@@ -18,6 +18,7 @@ test('the header has the correct test', async () => {
 });
 
 test('clicking login starts oauth flow', async () => {
+  await page.waitFor('.right a');
   await page.click('.right a');
 
   const url = await page.url();
